@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { ShieldAlert } from 'lucide-astro';
+---
+
+<Base title="404 — Nuvextro">
+  <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding-top:68px;">
+    <div style="text-align:center; max-width:480px; padding:2rem; position:relative; z-index:1;">
+      <div style="color:var(--brand-blue); opacity:0.3; margin-bottom:1.5rem; display:flex; justify-content:center;"><ShieldAlert size={80} strokeWidth={1} /></div>
+      <div style="font-family:'Open Sans', sans-serif; font-size:1.2rem; font-weight:700; color:var(--brand-blue); letter-spacing:0.1em; margin-bottom:0.5rem;">ERROR 404</div>
+      <h1 style="font-size:1.8rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.75rem;">Page not found</h1>
+      <p style="color:var(--white-dim); line-height:1.7; margin-bottom:2rem;">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn-primary">Back to Home →</a>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import { CheckCircle2 } from 'lucide-astro';
+---
+
+<Base title="About — Nuvextro" description="Discover Nuvextro’s mission, vision, and expertise in delivering scalable, secure, and reliable IT infrastructure and cloud consulting solutions.">
+
+  <div class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="label">About Nuvextro</span>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-0.03em; margin:0.75rem 0 1rem;">
+        Engineering Technology<br/>for Tomorrow
+      </h1>
+      <p style="color:var(--white-dim); font-size:1.05rem; max-width:600px; line-height:1.7;">
+        Nuvextro was founded to simplify the complexity of modern IT infrastructure—delivering reliable, high-performance solutions for modern organizations.
+      </p>
+    </div>
+  </div>
+
+  <!-- VISION & MISSION -->
+  <section style="padding:0 0 6rem; background: linear-gradient(180deg, transparent, var(--brand-blue-pale) 50%, transparent);">
+    <div class="container">
+      <div class="vision-grid">
+        <div>
+          <span class="label">Our Mission</span>
+          <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem); font-weight:800; letter-spacing:-0.025em; margin:0.75rem 0 1rem;">
+            Reliable, Scalable, and Efficient Solutions
+          </h2>
+          <div class="divider"></div>
+          <p style="color:var(--white-dim); line-height:1.7; margin-bottom:1.5rem;">
+            Our mission is to deliver reliable, scalable, and efficient IT infrastructure solutions that empower businesses to operate securely and grow without limitations. We focus on building systems that are not just functional—but resilient, efficient, and future-ready.
+          </p>
+          <span class="label">Our Vision</span>
+          <p style="color:var(--white-dim); line-height:1.7;">
+            To become a trusted global leader in IT infrastructure consulting by consistently delivering high-quality, future-ready technology solutions that drive business success.
+          </p>
+        </div>
+        <div>
+          <span class="label">The Nuvextro Approach</span>
+          <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem); font-weight:800; letter-spacing:-0.025em; margin:0.75rem 0 1rem;">
+            Solving modern infrastructure challenges
+          </h2>
+          <div class="divider"></div>
+          <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:1rem;">
+            {[
+              'Strategic infrastructure planning',
+              'Modern cloud and hybrid solutions',
+              'Proactive monitoring and optimization',
+              'Security-first architecture design',
+              'Scalable and resilient system design',
+            ].map(item => (
+              <div class="highlight-box" style="display:flex; gap:0.75rem; align-items:center;">
+                <CheckCircle2 size={16} style="color:var(--brand-blue);" />
+                <span style="font-size:0.9rem; color:var(--white-dim);">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- CORE EXPERTISE -->
+      <div style="margin-bottom:6rem;">
+        <div class="section-header">
+          <span class="label">Our Expertise</span>
+          <h2 class="section-title" style="margin-top:0.75rem;">Deep technical specializations</h2>
+          <p class="section-sub">We specialize in designing and managing critical IT systems across the entire infrastructure stack.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem;">
+          {[
+            { t: 'Cloud Infrastructure', d: 'Expertise in AWS, Azure, and Hybrid cloud environments.' },
+            { t: 'Managed Infrastructure', d: 'Proactive management of servers, storage, and virtualization.' },
+            { t: 'Network Architecture', d: 'Designing high-performance and secure network systems.' },
+            { t: 'Cybersecurity', d: 'Implementing multi-layered security and threat protection.' },
+            { t: 'Disaster Recovery', d: 'Reliable backup and rapid recovery strategies for continuity.' },
+            { t: 'IT Operations', d: 'Ongoing support and management for operational stability.' },
+          ].map(p => (
+            <div class="card">
+              <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">{p.t}</h3>
+              <p style="font-size:0.88rem; color:var(--white-dim); line-height:1.6;">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <style>
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 6rem;
+    }
+    @media (min-width: 769px) {
+      .vision-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+  </style>
+</Base>

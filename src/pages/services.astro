@@ -1,0 +1,183 @@
+---
+import Base from '../layouts/Base.astro';
+import { 
+  Server, Cloud, Activity, Shield, Database, Wrench,
+  Check
+} from 'lucide-astro';
+
+const services = [
+  {
+    id: 'managed-it',
+    icon: Server,
+    title: 'Managed IT Infrastructure',
+    tagline: 'Stable, optimized, enterprise-grade',
+    desc: 'Management of enterprise servers, operating systems, storage systems, and virtualization environments to ensure stable and optimized operations.',
+    bullets: [
+      'Server lifecycle management and monitoring',
+      'OS patching, updates, and configuration management',
+      'Storage system administration and capacity planning',
+      'VMware vSphere and Hyper-V virtualization management',
+      'Performance tuning and proactive incident resolution',
+      'Infrastructure health dashboards and monthly reporting',
+    ],
+    pricing: 'From $1,500/month',
+  },
+  {
+    id: 'cloud',
+    icon: Cloud,
+    title: 'Cloud Infrastructure Management',
+    tagline: 'Optimize spend. Maximize performance.',
+    desc: 'Management and optimization of cloud platforms including deployment, monitoring, and cost management across AWS, Azure, and Google Cloud.',
+    bullets: [
+      'Cloud environment deployment and configuration',
+      'Cost optimization and FinOps advisory',
+      'Infrastructure-as-Code (Terraform, Bicep, CloudFormation)',
+      'Cloud security posture management',
+      'Performance monitoring and auto-scaling configuration',
+      'Multi-cloud governance and policy enforcement',
+    ],
+    pricing: 'From $1,200/month',
+  },
+  {
+    id: 'network',
+    icon: Activity,
+    title: 'Network Monitoring & Management',
+    tagline: 'Always on. Always visible.',
+    desc: 'Monitoring and management of enterprise network infrastructure including routers, switches, firewalls, and SD-WAN environments.',
+    bullets: [
+      '24/7 network monitoring and alerting',
+      'Firewall configuration and policy management',
+      'Routing protocol administration (BGP, OSPF)',
+      'VLAN and network segmentation management',
+      'SD-WAN deployment and optimization',
+      'Network performance reporting and capacity planning',
+    ],
+    pricing: 'From $900/month',
+  },
+  {
+    id: 'security',
+    icon: Shield,
+    title: 'Cybersecurity Management',
+    tagline: 'Protect, detect, respond.',
+    desc: 'Protection of systems, networks, and data through continuous security monitoring, vulnerability management, and incident response.',
+    bullets: [
+      'Security information and event management (SIEM)',
+      'Vulnerability scanning and remediation management',
+      'Endpoint detection and response (EDR) administration',
+      'Security policy development and compliance',
+      'Incident response planning and execution',
+      'Security awareness and hardening reviews',
+    ],
+    pricing: 'From $1,800/month',
+  },
+  {
+    id: 'backup',
+    icon: Database,
+    title: 'Backup & Disaster Recovery',
+    tagline: 'When things go wrong, you\'re ready.',
+    desc: 'Data protection and disaster recovery planning to ensure business continuity and rapid restoration after incidents.',
+    bullets: [
+      'Backup solution design, deployment, and management',
+      'Recovery time objective (RTO) and RPO definition',
+      'DR site configuration and replication management',
+      'Regular backup integrity testing and validation',
+      'Disaster recovery runbook development',
+      'Cloud-based DR with Zerto, Veeam, or Azure Site Recovery',
+    ],
+    pricing: 'From $800/month',
+  },
+  {
+    id: 'support',
+    icon: Wrench,
+    title: 'IT Support Services',
+    tagline: 'Expert help when you need it.',
+    desc: 'Technical assistance and troubleshooting support for enterprise systems, infrastructure, and end users.',
+    bullets: [
+      'Level 2 and Level 3 infrastructure support',
+      'Escalation support for complex technical issues',
+      'On-demand specialist access (cloud, vmware, networking)',
+      'Root cause analysis and post-incident reports',
+      'Knowledge base and runbook documentation',
+      'Flexible SLA options (business hours or 24/7)',
+    ],
+  },
+];
+---
+
+<Base title="Services — Nuvextro" description="Nuvextro managed IT, cloud, network, cybersecurity, backup, and IT support services for enterprise clients.">
+
+  <div class="page-hero">
+    <div class="page-hero-glow"></div>
+    <div class="container">
+      <span class="label">What We Offer</span>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-0.03em; margin:0.75rem 0 1rem;">
+        Managed services for<br/>enterprise infrastructure
+      </h1>
+      <p style="color:var(--white-dim); font-size:1.05rem; max-width:560px; line-height:1.7;">
+        Comprehensive IT infrastructure and cloud managed services designed to ensure performance, security, and scalability for modern enterprises.
+      </p>
+    </div>
+  </div>
+
+  <section style="padding: 0 0 6rem;">
+    <div class="container">
+      <div style="display:flex; flex-direction:column; gap:2rem;">
+        {services.map(s => (
+          <div id={s.id} class="card service-card-grid">
+            <div>
+              <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+                <div class="service-icon" style="margin-bottom:0;"><s.icon size={24} /></div>
+                <div>
+                  <div class="label" style="margin-bottom:0.2rem;">{s.tagline}</div>
+                  <h2 style="font-size:1.3rem; font-weight:700;">{s.title}</h2>
+                </div>
+              </div>
+              <p style="color:var(--white-dim); font-size:0.92rem; line-height:1.7; margin-bottom:1.5rem;">{s.desc}</p>
+              <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                <a href="/contact" class="btn-primary" style="padding:0.55rem 1.2rem; font-size:0.82rem;">Request Service →</a>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.75rem; font-family:'Open Sans', sans-serif; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-muted); margin-bottom:0.75rem;">Includes</div>
+              <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.5rem;">
+                {s.bullets.map(b => (
+                  <li style="display:flex; gap:0.75rem; align-items:flex-start; font-size:0.88rem; color:var(--white-dim);">
+                    <Check size={16} class="cyan" style="margin-top:2px; flex-shrink:0;" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Retainer CTA -->
+      <div style="margin-top:4rem; background:linear-gradient(135deg,var(--navy-3),var(--navy-4)); border:1px solid var(--border-hi); border-radius:12px; padding:3rem; text-align:center;">
+        <span class="label">Flexible Engagements</span>
+        <h2 style="font-size:clamp(1.5rem,2.5vw,2rem); font-weight:800; letter-spacing:-0.02em; margin:0.75rem 0 1rem;">
+          Infrastructure Advisory Retainers
+        </h2>
+        <p style="color:var(--white-dim); max-width:540px; margin:0 auto 1.5rem; line-height:1.7; font-size:0.95rem;">
+          Not ready for a full managed service? Nuvextro also offers advisory retainers — ongoing technical guidance from a certified infrastructure architect.
+        </p>
+        <a href="/contact" class="btn-primary">Discuss a Retainer →</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .service-card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 769px) {
+      .service-card-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</Base>
