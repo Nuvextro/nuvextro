@@ -14,14 +14,15 @@ const {
   path = '',
 } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const navLinks = [
-  { href: '/',              label: 'Home' },
-  { href: '/services',      label: 'Services' },
-  { href: '/solutions',     label: 'Solutions' },
-  { href: '/case-studies',  label: 'Case Studies' },
-  { href: '/about',         label: 'About' },
-  { href: '/careers',       label: 'Careers' },
-  { href: '/contact',       label: 'Contact' },
+  { href: `${base}/`,              label: 'Home' },
+  { href: `${base}/services`,      label: 'Services' },
+  { href: `${base}/solutions`,     label: 'Solutions' },
+  { href: `${base}/case-studies`,  label: 'Case Studies' },
+  { href: `${base}/about`,         label: 'About' },
+  { href: `${base}/careers`,       label: 'Careers' },
+  { href: `${base}/contact`,       label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -35,7 +36,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   <meta name="robots" content="noindex, nofollow" />
   <meta name="description" content={description} />
   <title>{title}</title>
-  <link rel="icon" type="image/png" href="/img/logo/logo-square.png" />
+  <link rel="icon" type="image/png" href={`${base}/img/logo/logo-square.png`} />
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -46,8 +47,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo">
-        <img src="/img/logo/logo-transparentbg.png" alt="Nuvextro Logo" class="brand-logo" />
+      <a href={`${base}/`} class="nav-logo">
+        <img src={`${base}/img/logo/logo-transparentbg.png`} alt="Nuvextro Logo" class="brand-logo" />
       </a>
       <ul class="nav-links" id="nav-links">
         {navLinks.map(l => (
@@ -83,32 +84,32 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <img src="/img/logo/logo-transparentbg.png" alt="Nuvextro Logo" class="brand-logo" />
+            <img src={`${base}/img/logo/logo-transparentbg.png`} alt="Nuvextro Logo" class="brand-logo" />
           </div>
           <p class="footer-tagline" style="margin-top: 0.5rem;">Engineering Technology for Tomorrow</p>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Services</div>
-          <a href="/services#managed-it">Managed IT</a>
-          <a href="/services#cloud">Cloud Management</a>
-          <a href="/services#network">Network Monitoring</a>
-          <a href="/services#security">Cybersecurity</a>
-          <a href="/services#backup">Backup & DR</a>
+          <a href={`${base}/services#managed-it`}>Managed IT</a>
+          <a href={`${base}/services#cloud`}>Cloud Management</a>
+          <a href={`${base}/services#network`}>Network Monitoring</a>
+          <a href={`${base}/services#security`}>Cybersecurity</a>
+          <a href={`${base}/services#backup`}>Backup & DR</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
-          <a href="/about">About</a>
-          <a href="/case-studies">Case Studies</a>
-          <a href="/careers">Careers</a>
-          <a href="/contact">Contact</a>
+          <a href={`${base}/about`}>About</a>
+          <a href={`${base}/case-studies`}>Case Studies</a>
+          <a href={`${base}/careers`}>Careers</a>
+          <a href={`${base}/contact`}>Contact</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Solutions</div>
-          <a href="/solutions#vmware">VMware Deployment</a>
-          <a href="/solutions#cloud-migration">Cloud Migration</a>
-          <a href="/solutions#dr">Disaster Recovery</a>
-          <a href="/solutions#security">Security Infra</a>
-          <a href="/solutions#network">Network Infra</a>
+          <a href={`${base}/solutions#vmware`}>VMware Deployment</a>
+          <a href={`${base}/solutions#cloud-migration`}>Cloud Migration</a>
+          <a href={`${base}/solutions#dr`}>Disaster Recovery</a>
+          <a href={`${base}/solutions#security`}>Security Infra</a>
+          <a href={`${base}/solutions#network`}>Network Infra</a>
         </div>
       </div>
       <div class="footer-bottom">
