@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://nuvextro.pages.dev/sitemap.xml
+Disallow: /
