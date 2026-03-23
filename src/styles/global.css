@@ -147,6 +147,7 @@ h1,h2,h3,h4 { font-family: 'Open Sans', sans-serif; line-height: 1.15; }
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  gap: 2rem;
 }
 .nav-links { display: none; position: fixed; inset: 68px 0 0; background: var(--navy-2); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
 .nav-links.open { display: flex; }
