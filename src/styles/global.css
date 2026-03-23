@@ -155,10 +155,14 @@ h1,h2,h3,h4 { font-family: 'Open Sans', sans-serif; line-height: 1.15; }
 .nav-burger { display: block; }
 
 @media (min-width: 769px) {
-  .nav-links { display: flex; position: static; inset: auto; background: none; flex-direction: row; gap: 2.5rem; }
-  .nav-logo { font-size: 1.35rem; display: flex; align-items: center; margin-right: 4rem; }
+  .nav-links { display: flex; position: static; inset: auto; background: none; flex-direction: row; gap: 3rem; }
+  .nav-logo { font-size: 1.35rem; display: flex; align-items: center; }
   .nav-links a { font-size: 0.85rem; }
   .nav-burger { display: none; }
+}
+
+@media (min-width: 1600px) {
+  .nav .container { max-width: 92% !important; }
 }
 
 .brand-logo {
