@@ -70,6 +70,13 @@ h1,h2,h3,h4 { font-family: 'Open Sans', sans-serif; line-height: 1.15; }
 
 .container  { max-width: 1140px; margin: 0 auto !important; padding: 0 1.5rem; position: relative; }
 
+@media (min-width: 1600px) {
+  .container { max-width: 1400px; }
+}
+@media (min-width: 2400px) {
+  .container { max-width: 1800px; }
+}
+
 .card {
   background: var(--navy-2);
   border: 1px solid var(--border);
@@ -147,8 +154,8 @@ h1,h2,h3,h4 { font-family: 'Open Sans', sans-serif; line-height: 1.15; }
 .nav-burger { display: block; }
 
 @media (min-width: 769px) {
-  .nav-links { display: flex; position: static; inset: auto; background: none; flex-direction: row; gap: 2rem; }
-  .nav-logo { font-size: 1.35rem; display: flex; align-items: center; }
+  .nav-links { display: flex; position: static; inset: auto; background: none; flex-direction: row; gap: 2.5rem; }
+  .nav-logo { font-size: 1.35rem; display: flex; align-items: center; margin-right: 4rem; }
   .nav-links a { font-size: 0.85rem; }
   .nav-burger { display: none; }
 }
