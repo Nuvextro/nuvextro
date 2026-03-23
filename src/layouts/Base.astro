@@ -59,12 +59,31 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     .goog-te-gadget-simple {
       background-color: transparent !important;
       border: 1px solid var(--border) !important;
-      padding: 4px 8px !important;
+      padding: 4px 10px !important;
       border-radius: 4px !important;
       font-size: 13px !important;
       color: var(--white-dim) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      white-space: nowrap !important;
     }
-    .goog-te-menu-value span { color: var(--white-dim) !important; }
+    .goog-te-gadget-icon, .goog-te-gadget-simple img {
+      display: none !important;
+    }
+    .goog-te-menu-value {
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+    }
+    .goog-te-menu-value span {
+      color: var(--white-dim) !important;
+    }
+    /* Hide the "Powered by" part specifically */
+    .goog-te-menu-value span:nth-child(3),
+    .goog-te-menu-value span:nth-child(5) {
+      display: none !important;
+    }
     
     /* Fix translate dropdown height and positioning */
     .goog-te-menu-frame {
