@@ -13,8 +13,8 @@ import { CheckCircle2 } from 'lucide-astro';
         We've received your message and will be in touch within 1–2 business days. In the meantime, feel free to explore our services and case studies.
       </p>
       <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="/" class="btn-primary">Back to Home →</a>
-        <a href="/services" class="btn-outline">Explore Services</a>
+        <a href={`${import.meta.env.BASE_URL}`} class="btn-primary">Back to Home →</a>
+        <a href={`${import.meta.env.BASE_URL}services`} class="btn-outline">Explore Services</a>
       </div>
     </div>
   </div>

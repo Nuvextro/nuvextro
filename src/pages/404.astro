@@ -10,7 +10,7 @@ import { ShieldAlert } from 'lucide-astro';
       <div style="font-family:'Open Sans', sans-serif; font-size:1.2rem; font-weight:700; color:var(--brand-blue); letter-spacing:0.1em; margin-bottom:0.5rem;">ERROR 404</div>
       <h1 style="font-size:1.8rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.75rem;">Page not found</h1>
       <p style="color:var(--white-dim); line-height:1.7; margin-bottom:2rem;">The page you're looking for doesn't exist or has been moved.</p>
-      <a href="/" class="btn-primary">Back to Home →</a>
+      <a href={`${import.meta.env.BASE_URL}`} class="btn-primary">Back to Home →</a>
     </div>
   </div>
 </Base>

@@ -2,7 +2,8 @@
 import Base from '../layouts/Base.astro';
 import { 
   Server, Cloud, Activity, Shield, Database, Wrench,
-  FileText, PenTool, CheckCircle, Handshake
+  FileText, PenTool, CheckCircle, Handshake,
+  Zap, Network, BarChart3, Users, ArrowRight
 } from 'lucide-astro';
 
 const services = [
@@ -20,64 +21,84 @@ const steps = [
   { n: '03', icon: CheckCircle, title: 'Implement', desc: 'We deploy solutions with precision, minimal disruption, and enterprise-grade quality standards.' },
   { n: '04', icon: Handshake, title: 'Optimize', desc: 'We ensure continuous performance, cost efficiency, and security through proactive management.' },
 ];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base>
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="container hero-content">
+  <section class="hero" style={`background-image: url('${base}/img/hero-bg.jpg'); background-size: cover; background-position: center; position: relative;`}>
+    <div class="hero-overlay" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.4));"></div>
+    <div class="container hero-content" style="position: relative; z-index: 1;">
       <div class="hero-eyebrow animate delay-1">
-        <span class="label">Engineering Technology for Tomorrow</span>
+        <span class="label" style="color: var(--brand-blue); border-color: var(--brand-blue-pale);">Engineering Technology for Tomorrow</span>
       </div>
-      <h1 class="hero-title animate delay-2">
-        Enterprise <em>Infrastructure & Cloud Consulting</em> That Scales With You
+      <h1 class="hero-title animate delay-2" style="font-size: 3vw; line-height: 1.1; color: #ffffff;">
+        Enterprise <span style="color: var(--brand-blue);">IT Infrastructure</span> That Scales With Your Business
       </h1>
-      <p class="hero-sub animate delay-3">
-        Nuvextro delivers scalable, secure, and reliable IT infrastructure solutions. We help businesses design, manage, and optimize systems for performance and cost efficiency.
+      <p class="hero-sub animate delay-3" style="color: rgba(255,255,255,0.9); max-width: 700px;">
+        Design, manage, and optimize secure, scalable IT systems. Cloud, security, networking, and disaster recovery solutions built for reliability.
       </p>
-
+ 
       <div class="hero-actions animate delay-4">
-        <a href="/contact" class="btn-primary">Get a Free Consultation &rarr;</a>
-        <a href="/services" class="btn-outline">Explore Services</a>
-      </div>
-
-      <div class="hero-stats animate delay-4">
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">6+</div>
-          <div class="hero-stat-label">Core service areas</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">100%</div>
-          <div class="hero-stat-label">Enterprise-grade delivery</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">Cloud-First</div>
-          <div class="hero-stat-label">Modern architecture</div>
-        </div>
+        <a href={`${base}/contact`} class="btn-primary">Book Consultation &rarr;</a>
+        <a href={`${base}/services`} class="btn-outline" style="border-color: rgba(255,255,255,0.3); color: #ffffff;">Explore Services</a>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES OVERVIEW -->
-  <section style="padding: 6rem 0;">
+  <!-- WHY CHOOSE NUVEEXTRO (from v2) - MOVED UP -->
+  <section style="padding: 6.5rem 0; background: var(--navy);">
     <div class="container">
-      <div class="section-header">
-        <span class="label">What We Do</span>
-        <h2 class="section-title" style="margin-top:0.75rem;">Managed services built<br/>for enterprise scale</h2>
-        <p class="section-sub">From strategic consulting to ongoing infrastructure management, Nuvextro provides the expertise your organization needs.</p>
+      <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto 4.5rem;">
+        <h2 class="section-title">Why Choose Nuvextro</h2>
+        <p class="section-sub">We combine deep technical expertise with a results-driven approach to deliver IT infrastructure solutions that work.</p>
       </div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:1.5rem;">
-        {services.map(s => (
-          <div class="card">
-            <div class="service-icon"><s.icon size={24} /></div>
-            <div class="service-title">{s.title}</div>
-            <p class="service-desc">{s.desc}</p>
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:2.5rem;">
+        {[
+          { icon: Shield, title: 'Security First', desc: 'Built-in security architecture protecting your systems and data from evolving threats.' },
+          { icon: Zap, title: 'High Performance', desc: 'Optimized infrastructure ensuring consistent uptime and peak performance.' },
+          { icon: Network, title: 'Scalable Design', desc: 'Solutions that grow with your business without constant rework or disruption.' },
+        ].map(item => (
+          <div style="padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border); background: var(--navy-2); transition: all 0.3s ease; text-align: center;" class="hover-glow">
+            <div style="width: 64px; height: 64px; background: var(--brand-blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--brand-blue);">
+              <item.icon size={32} />
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--white);">{item.title}</h3>
+            <p style="color: var(--white-dim); line-height: 1.6;">{item.desc}</p>
           </div>
         ))}
       </div>
-      <div style="text-align:center; margin-top:2.5rem;">
-        <a href="/services" class="btn-outline">View All Services →</a>
+    </div>
+  </section>
+
+  <!-- COMPREHENSIVE IT SERVICES (from v2) -->
+  <section style="padding: 6rem 0; background: var(--navy-2);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+        <h2 class="section-title">Comprehensive IT Services</h2>
+        <p class="section-sub" style="margin: 1rem auto 0;">A complete range of infrastructure and managed services designed for modern businesses.</p>
+      </div>
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap:2rem;">
+        {[
+          { icon: Cloud, title: 'Cloud Infrastructure', desc: 'Design, deploy, and optimize cloud environments across AWS, Azure, and hybrid solutions.' },
+          { icon: Shield, title: 'Cybersecurity', desc: 'Comprehensive security framework implementation and management to protect your systems.' },
+          { icon: Network, title: 'Network Optimization', desc: 'Build and maintain high-performing networks with monitoring and optimization.' },
+          { icon: BarChart3, title: 'Managed IT Services', desc: 'Proactive monitoring, maintenance, and support for stable system operations.' },
+          { icon: Zap, title: 'Disaster Recovery', desc: 'Ensure business continuity with robust backup and recovery systems.' },
+          { icon: Users, title: 'Endpoint Management', desc: 'Secure and manage devices across your entire organization with ease.' },
+        ].map(s => (
+          <div class="card hover-lift" style="padding: 2.5rem; border: 1px solid var(--border); border-radius: 16px; background: var(--navy); transition: all 0.3s ease;">
+            <div style="color: var(--brand-blue); margin-bottom: 1.5rem;"><s.icon size={32} /></div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--white);">{s.title}</h3>
+            <p style="color: var(--white-dim); font-size: 0.95rem; line-height: 1.6;">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:3.5rem;">
+        <a href={`${base}/services`} class="btn-outline">Explore All Services <ArrowRight className="ml-2" size={18} /></a>
       </div>
     </div>
   </section>
@@ -92,7 +113,7 @@ const steps = [
       </div>
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:1.5rem;">
         {steps.map(s => (
-          <div class="card" style="border-top: 2px solid var(--brand-blue); border-radius: 0 0 8px 8px;">
+          <div class="card" style="border-top: 2px solid var(--brand-blue); border-radius: 0 0 8px 8px; background: var(--navy);">
             <div class="step-num">Phase {s.n}</div>
             <div style="color:var(--brand-blue); margin-bottom:1rem;"><s.icon size={32} /></div>
             <div class="step-title">{s.title}</div>
@@ -103,60 +124,22 @@ const steps = [
     </div>
   </section>
 
-  <!-- VALUE PROPS -->
-  <section style="padding: 6rem 0;">
-    <div class="container">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
-        <div>
-          <span class="label">Why Nuvextro</span>
-          <h2 style="font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-0.025em; margin:0.75rem 0 1.5rem;">
-            Reliable, Scalable, and<br/>Security-First Solutions
-          </h2>
-          <div class="divider"></div>
-          <div class="prose">
-            <p>Modern businesses require infrastructure that can handle dynamic growth while maintaining strict security and performance standards. Nuvextro bridges the gap between complex technology and business outcomes.</p>
-            <p>We provide deep technical expertise and structured governance, ensuring your systems are optimized for cost and reliability so you can focus on your core operations.</p>
-          </div>
-          <div style="margin-top:2rem;">
-            <a href="/about" class="btn-outline">Learn More About Us →</a>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-          {[
-            ['Enterprise Expertise', 'Deep experience managing complex IT environments across diverse industries.'],
-            ['Scalable by Design', 'We build infrastructure that grows with you without constant reconfiguration.'],
-            ['Cost Optimization', 'Reduce operational overhead and optimize cloud spending with smarter architecture.'],
-            ['Reliability & Uptime', 'Proactive monitoring and failover systems ensuring high system availability.'],
-          ].map(([t,d]) => (
-            <div class="highlight-box" style="display:flex; gap:1rem; align-items:flex-start;">
-              <div style="color:var(--brand-blue); font-size:1rem; margin-top:2px;">◆</div>
-              <div>
-                <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">{t}</div>
-                <div style="font-size:0.88rem; color:var(--white-dim);">{d}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section style="padding: 5rem 0;">
-    <div class="container">
-      <div style="background: linear-gradient(135deg, var(--navy-3), var(--navy-4)); border: 1px solid var(--border-hi); border-radius:12px; padding:4rem; text-align:center; position:relative; overflow:hidden;">
-        <div style="position:absolute; inset:0; background:radial-gradient(ellipse at center, var(--brand-blue-pale) 0%, transparent 70%); pointer-events:none;"></div>
-        <span class="label" style="position:relative;">Ready to optimize?</span>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem); font-weight:800; letter-spacing:-0.025em; margin:0.75rem 0 1rem; position:relative;">
-          Let's talk about your infrastructure needs
-        </h2>
-        <p style="color:var(--white-dim); max-width:480px; margin:0 auto 2rem; line-height:1.7; position:relative;">
-          Whether it's an ongoing managed service or a specific cloud modernization project — we design and deliver solutions that work.
-        </p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative;">
-          <a href="/contact" class="btn-primary">Get a Free Consultation →</a>
-          <a href="/services" class="btn-outline">View All Services</a>
-        </div>
+  <!-- CTA SECTION (v2 style) -->
+  <section style="padding: 8rem 0; background: var(--navy); border-top: 1px solid var(--border);">
+    <div class="container" style="text-align: center; max-width: 800px;">
+      <h2 style="font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+        Ready to Transform Your IT Infrastructure?
+      </h2>
+      <p style="color: var(--white-dim); font-size: 1.15rem; margin-bottom: 3rem; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Let's discuss how Nuvextro can help you build reliable, scalable, and secure systems.
+      </p>
+      <div style="display:flex; gap:1.25rem; justify-content:center; flex-wrap:wrap;">
+        <a href={`${base}/contact`} class="btn-primary" style="padding: 1rem 2.5rem; font-size: 1rem;">
+          Schedule Consultation <ArrowRight className="ml-2" size={20} />
+        </a>
+        <a href={`${base}/case-studies`} class="btn-outline" style="padding: 1rem 2.5rem; font-size: 1rem; border-width: 2px; border-color: var(--brand-blue);">
+          View Case Studies
+        </a>
       </div>
     </div>
   </section>

@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { Sun, Moon, Monitor } from 'lucide-astro';
 
 interface Props {
   title?: string;
@@ -22,14 +21,13 @@ const navLinks = [
   { href: `${base}/case-studies`,  label: 'Case Studies' },
   { href: `${base}/about`,         label: 'About' },
   { href: `${base}/careers`,       label: 'Careers' },
-  { href: `${base}/contact`,       label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,14 +39,63 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  
+  <!-- Google Translate -->
+  <script is:inline>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,de,ar,ja,zh-CN,ko',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script is:inline src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+  <style is:inline>
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    body { top: 0px !important; }
+    .goog-te-gadget-icon { display: none !important; }
+    .goog-te-gadget-simple {
+      background-color: transparent !important;
+      border: 1px solid var(--border) !important;
+      padding: 4px 8px !important;
+      border-radius: 4px !important;
+      font-size: 13px !important;
+      color: var(--white-dim) !important;
+    }
+    .goog-te-menu-value span { color: var(--white-dim) !important; }
+    
+    /* Fix translate dropdown height and positioning */
+    .goog-te-menu-frame {
+      max-height: 400px !important;
+      overflow-y: auto !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 8px !important;
+    }
+    .goog-te-menu2 {
+      max-height: 400px !important;
+      overflow-y: auto !important;
+      background-color: var(--navy-2) !important;
+      border: none !important;
+    }
+    .goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div {
+      color: var(--white) !important;
+      font-family: 'Open Sans', sans-serif !important;
+    }
+    .goog-te-menu2-item:hover div {
+      background-color: var(--brand-blue-pale) !important;
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a href={`${base}/`} class="nav-logo">
-        <img src={`${base}/img/logo/logo-transparentbg.png`} alt="Nuvextro Logo" class="brand-logo" />
+      <a href={`${base}/`} class="nav-logo" style="margin-right: auto;">
+        <img src={`${base}/img/logo/logo-nuvextro.webp`} alt="Nuvextro Logo" class="brand-logo" style="height: 56px; width: auto;" />
       </a>
       <ul class="nav-links" id="nav-links">
         {navLinks.map(l => (
@@ -56,16 +103,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
             <a
               href={l.href}
               class={currentPath === l.href.replace(/\/$/, '') || (l.href !== '/' && currentPath.startsWith(l.href)) ? 'active' : ''}
+              style="white-space: nowrap;"
             >{l.label}</a>
           </li>
         ))}
-        <li><a href="/contact" class="btn-primary" style="padding:0.55rem 1.2rem;font-size:0.8rem;">Get in Touch</a></li>
-        <li class="theme-toggle-container">
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <Sun class="icon-sun" size={18} />
-            <Moon class="icon-moon" size={18} />
-            <Monitor class="icon-system" size={18} />
-          </button>
+        <li><a href={`${base}/contact`} class="btn-primary" style="padding:0.55rem 1.2rem;font-size:0.8rem;">Request a Quote</a></li>
+        <li class="translate-container">
+          <div id="google_translate_element"></div>
         </li>
       </ul>
       <button class="nav-burger" id="burger" aria-label="Toggle menu">
@@ -84,7 +128,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <img src={`${base}/img/logo/logo-transparentbg.png`} alt="Nuvextro Logo" class="brand-logo" />
+            <img src={`${base}/img/logo/logo-nuvextro.webp`} alt="Nuvextro Logo" class="brand-logo" style="height: 64px; width: auto;" />
           </div>
           <p class="footer-tagline" style="margin-top: 0.5rem;">Engineering Technology for Tomorrow</p>
         </div>
@@ -120,102 +164,21 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   </footer>
 
   <script is:inline>
-    const getTheme = () => {
-      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme');
-      }
-      return 'light';
-    };
-
-    const setTheme = (theme) => {
-      const root = document.documentElement;
-      if (theme === 'system') {
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        root.setAttribute('data-theme', systemTheme);
-      } else {
-        root.setAttribute('data-theme', theme);
-      }
-      localStorage.setItem('theme', theme);
-    };
-
-    const currentTheme = getTheme();
-    setTheme(currentTheme);
-
-    document.addEventListener('astro:after-swap', () => {
-      setTheme(getTheme());
-    });
+    // Theme script removed as per request to stick to light mode
   </script>
 
   <style>
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--white-dim);
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 4px;
+    .translate-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
+      margin-left: 0.5rem;
     }
-    .theme-toggle:hover {
-      color: var(--white);
-      border-color: var(--border-hi);
-      background: var(--brand-blue-pale);
-    }
-    
-    .icon-sun, .icon-moon, .icon-system { display: none; }
-    :root[data-theme="light"] .icon-sun { display: block; }
-    :root[data-theme="dark"] .icon-moon { display: block; }
-    /* We could add logic for 'system' icon if we want a 3-way toggle, 
-       but for now we'll do a simple dark/light toggle and can expand to system if needed.
-       Actually, I'll implement a cycle: light -> dark -> system.
-    */
   </style>
 
   <script>
     const burger = document.getElementById('burger');
     const links = document.getElementById('nav-links');
     burger?.addEventListener('click', () => links?.classList.toggle('open'));
-
-    const toggleBtn = document.getElementById('theme-toggle');
-    toggleBtn?.addEventListener('click', () => {
-      const root = document.documentElement;
-      const current = localStorage.getItem('theme') || 'system';
-      let next = 'light';
-      if (current === 'light') next = 'dark';
-      else if (current === 'dark') next = 'system';
-      
-      // Dispatch custom event or just call function if defined
-      const setTheme = (theme) => {
-        if (theme === 'system') {
-          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-          root.setAttribute('data-theme', systemTheme);
-        } else {
-          root.setAttribute('data-theme', theme);
-        }
-        localStorage.setItem('theme', theme);
-      };
-      setTheme(next);
-      
-      // Update icon visibility based on the *choice*
-      updateIcon(next);
-    });
-
-    function updateIcon(theme) {
-      const sun = document.querySelector('.icon-sun');
-      const moon = document.querySelector('.icon-moon');
-      const sys = document.querySelector('.icon-system');
-      if (!sun || !moon || !sys) return;
-      
-      sun.style.display = theme === 'light' ? 'block' : 'none';
-      moon.style.display = theme === 'dark' ? 'block' : 'none';
-      sys.style.display = theme === 'system' ? 'block' : 'none';
-    }
-    
-    // Initial icon state
-    updateIcon(localStorage.getItem('theme') || 'system');
   </script>
 </body>
 </html>
