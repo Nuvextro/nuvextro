@@ -13,14 +13,21 @@ const {
   path = '',
 } = Astro.props;
 
+import { ChevronDown } from 'lucide-astro';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const navLinks = [
   { href: `${base}/`,              label: 'Home' },
   { href: `${base}/services`,      label: 'Services' },
   { href: `${base}/solutions`,     label: 'Solutions' },
-  { href: `${base}/case-studies`,  label: 'Case Studies' },
   { href: `${base}/about`,         label: 'About' },
-  { href: `${base}/careers`,       label: 'Careers' },
+  { 
+    label: 'Resources',
+    dropdown: [
+      { href: `${base}/case-studies`,  label: 'Case Studies' },
+      { href: `${base}/careers`,       label: 'Careers' },
+    ]
+  },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -119,13 +126,28 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <div class="nav-spacer" style="flex-grow: 1;"></div>
       <ul class="nav-links" id="nav-links">
         {navLinks.map(l => (
-          <li>
-            <a
-              href={l.href}
-              class={currentPath === l.href.replace(/\/$/, '') || (l.href !== '/' && currentPath.startsWith(l.href)) ? 'active' : ''}
-              style="white-space: nowrap;"
-            >{l.label}</a>
-          </li>
+          l.dropdown ? (
+            <li class="nav-dropdown-wrapper">
+              <span class="nav-link-item dropdown-trigger" style="cursor: default; display: flex; align-items: center; gap: 4px;">
+                {l.label} <ChevronDown size={14} />
+              </span>
+              <ul class="nav-dropdown">
+                {l.dropdown.map(d => (
+                  <li>
+                    <a href={d.href}>{d.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={l.href}
+                class={currentPath === l.href.replace(/\/$/, '') || (l.href !== '/' && currentPath.startsWith(l.href)) ? 'active nav-link-item' : 'nav-link-item'}
+                style="white-space: nowrap;"
+              >{l.label}</a>
+            </li>
+          )
         ))}
         <li><a href={`${base}/contact`} class="btn-primary" style="padding:0.55rem 1.2rem;font-size:0.8rem;">Request a Quote</a></li>
         <li class="translate-container">
