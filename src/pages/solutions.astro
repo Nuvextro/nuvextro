@@ -94,22 +94,26 @@ const future = [
   { icon: Bot, title: 'AI Infrastructure Solutions', desc: 'GPU cluster setup, LLM inference infrastructure, and enterprise AI platform deployments.' },
   { icon: Laptop, title: 'Enterprise Software Development', desc: 'Custom tooling, automation platforms, and internal developer platforms.' },
 ];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title="Solutions — Nuvextro" description="Project-based infrastructure implementation solutions including VMware, cloud migration, disaster recovery, and security deployments.">
 
-  <div class="page-hero">
-    <div class="page-hero-glow"></div>
-    <div class="container">
-      <span class="label">Enterprise Solutions</span>
-      <h1 style="font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-0.03em; margin:0.75rem 0 1rem;">
+  <!-- HERO -->
+  <section class="hero" style={`background-image: url('${base}/img/solutions-hero.png'); background-size: cover; background-position: center; position: relative; padding: 10rem 0 6rem; min-height: auto;`}>
+    <div class="hero-overlay" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.4));"></div>
+    <div class="container hero-content" style="position: relative; z-index: 1;">
+      <div class="hero-eyebrow animate delay-1">
+        <span class="label" style="color: var(--brand-blue); border-color: var(--brand-blue-pale);">Enterprise Solutions</span>
+      </div>
+      <h1 class="hero-title animate delay-2" style="font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; color: #ffffff;">
         Enterprise Solutions
       </h1>
-      <p style="color:var(--white-dim); font-size:1.05rem; max-width:560px; line-height:1.7;">
+      <p class="hero-sub animate delay-3" style="color: rgba(255,255,255,0.9); max-width: 600px;">
         End-to-end transformation strategies that deliver measurable impact.
       </p>
     </div>
-  </div>
+  </section>
 
   <section style="padding:0 0 6rem;">
     <div class="container">
