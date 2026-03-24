@@ -289,14 +289,14 @@ h1,h2,h3,h4 { font-family: 'Open Sans', sans-serif; line-height: 1.15; }
 
 /* ── GLASSMORPHISM ── */
 .glass-box {
-  background: rgba(10, 25, 47, 0.65); /* Darker for better contrast */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 25, 47, 0.2); /* Significant transparency increase */
+  backdrop-filter: blur(10px); /* Reduced blur by 50% */
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.3); /* Top highlight */
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 32px;
   padding: 4rem;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255,255,255,0.03);
 }
 .hero-footer-stats {
   display: grid;
